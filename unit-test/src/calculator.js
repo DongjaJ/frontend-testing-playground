@@ -1,5 +1,7 @@
 class Calculator {
-  constructor() {}
+  constructor() {
+    this.value = 0;
+  }
 
   set(num) {
     this.value = num;
