@@ -1,34 +1,32 @@
 class Stack {
-  stackSize;
-  stackTop;
-  data;
+  _size;
+  _top;
   constructor() {
-    this.stackSize = 0;
-    this.stackTop = -1;
-    this.data = [];
+    this._size = 0;
+    this._top = null;
   }
 
   push(value) {
-    this.stackTop += 1;
-    this.data[this.stackTop] = value;
-    this.stackSize += 1;
+    const node = { value, next: this._top };
+    this._top = node;
+    this._size += 1;
   }
 
   get top() {
-    if (this.stackSize === 0) throw new Error('stack is empty');
-    return this.data[this.stackTop];
+    if (this._top === null) throw new Error('stack is empty');
+    return this._top.value;
   }
 
   pop() {
-    if (this.stackSize === 0) throw new Error('stack is empty');
-    const item = this.data[this.stackTop];
-    this.stackSize -= 1;
-    this.stackTop -= 1;
-    return item;
+    if (this._top === null) throw new Error('stack is empty');
+    const item = this._top;
+    this._size -= 1;
+    this._top = this._top.next;
+    return item.value;
   }
 
   get size() {
-    return this.stackSize;
+    return this._size;
   }
 }
 
