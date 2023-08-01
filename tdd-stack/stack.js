@@ -1,9 +1,9 @@
 class Stack {
-  size;
+  stackSize;
   stackTop;
   data;
   constructor() {
-    this.size = 0;
+    this.stackSize = 0;
     this.stackTop = -1;
     this.data = [];
   }
@@ -11,15 +11,24 @@ class Stack {
   push(value) {
     this.stackTop += 1;
     this.data[this.stackTop] = value;
-    this.size += 1;
+    this.stackSize += 1;
   }
 
   get top() {
+    if (this.stackSize === 0) throw new Error('stack is empty');
     return this.data[this.stackTop];
   }
 
   pop() {
-    if (this.size === 0) throw new Error('stack is empty');
+    if (this.stackSize === 0) throw new Error('stack is empty');
+    const item = this.data[this.stackTop];
+    this.stackSize -= 1;
+    this.stackTop -= 1;
+    return item;
+  }
+
+  get size() {
+    return this.stackSize;
   }
 }
 
