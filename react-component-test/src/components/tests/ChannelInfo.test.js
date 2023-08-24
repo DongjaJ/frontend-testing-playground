@@ -1,4 +1,4 @@
-import { render, waitFor, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { withAllContext, withRouter } from '../../tests/utils';
 import ChannelInfo from '../ChannelInfo';
 import { Route } from 'react-router-dom';
